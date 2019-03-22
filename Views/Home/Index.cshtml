@@ -1,0 +1,44 @@
+﻿@model User
+<div class="bg-secondary pb-4">
+    <div class="navbar navbar-expand-lg bg-dark text-white justify-content-between">
+        <h3 class="display-4">Register to NightLife</h3>
+        <div>
+            <p class="mb-0">Already have an Account?</p>
+            <a href="/login" class="offset-9">Login</a>
+        </div>
+    </div>
+    <div class="container col-6 bg-light pt-2 mt-4 pb-3">
+        <form asp-action="CreateUser" asp-controller="Home" method="post">
+            <div class="form-group">
+                <label asp-for="FirstName" class="font-weight-bold mb-0"></label>
+                <span asp-validation-for="FirstName" class="form-text text-danger"></span>
+                <input asp-for="FirstName" class="form-control bg-light">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName" class="font-weight-bold mb-0"></label>
+                <span asp-validation-for="LastName" class="form-text text-danger"></span>
+                <input asp-for="LastName" class="form-control bg-light">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="font-weight-bold mb-0"></label>
+                <span asp-validation-for="Email" class="form-text text-danger"></span>
+                <input asp-for="Email" class="form-control bg-light">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="font-weight-bold mb-0"></label>
+                <span asp-validation-for="Password" class="form-text text-danger"></span>
+                <input asp-for="Password" class="form-control bg-light">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Confirm" class="font-weight-bold mb-0"></label>
+                <span asp-validation-for="Confirm" class="form-text text-danger"></span>
+                <input asp-for="Confirm" class="form-control bg-light">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3 mt-3 offset-10">Sign Up</button>
+        </form>
+    </div>
+</div>

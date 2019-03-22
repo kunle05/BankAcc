@@ -1,0 +1,50 @@
+@model ViewModel
+
+<div class="bg-secondary pb-5">
+    <div class="navbar navbar-expand-lg bg-dark text-white justify-content-between mt-0">
+        <h3 class="display-4">Welcome @Model.thisUser.FirstName</h3>
+        <div>
+            @{
+                decimal Sum = 0;
+                foreach(Transaction usertrans in Model.thisUser.UserTransactions)
+                {
+                    Sum += (decimal)usertrans.Amount;
+                }
+            }
+            <a href="/logout" class="offset-10">Logout</a>  
+            <h3>Current Balance $@Sum</h3>
+        </div>   
+    </div>
+
+    <div class="form-inline mt-0">
+        <form asp-action="Transaction" asp-controller="Home" method="post">
+            <span asp-validation-for="Trans.Amount" class="text-danger ml-4"mb-0></span>
+            <div class="form-group m-3">
+                <label asp-for="Trans.Amount" class="font-weight-bold text-white"></label>
+                <input asp-for="Trans.Amount" class="form-control bg-light m-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="bg-light mr-3 ml-3" style="height: 400px; overflow: auto">
+        <table class="table table-striped">
+            <thead scope="col">
+                <tr>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach(Transaction trans in Model.thisUser.UserTransactions)
+                    {
+                        <tr>
+                            <td>@trans.Amount</td>
+                            <td>@trans.CreatedAt.ToString("MMM dd yyyy")</td>
+                        </tr>
+                    }
+                }          
+            </tbody>
+        </table>
+    </div>
+</div>
